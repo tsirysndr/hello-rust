@@ -6,16 +6,15 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1649422299,
+        "lastModified": 1649428628,
         "narHash": "sha256-OqpiI4c9XbiaYmQN6I+9k3C8aIU+8hv4fnuCPUEmksQ=",
         "owner": "flox",
         "repo": "capacitor",
-        "rev": "b321dbcb120c4e90af3b9b35aaec77a2b440b89e",
+        "rev": "0b978f9f46f78ac542edcafba03a07c8f48a8573",
         "type": "github"
       },
       "original": {
         "owner": "flox",
-        "ref": "ysndr",
         "repo": "capacitor",
         "type": "github"
       }

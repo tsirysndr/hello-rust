@@ -1,6 +1,6 @@
 {
   inputs.nixpkgs.url = "github:nixos/nixpkgs";
-  inputs.capacitor.url = "github:flox/capacitor?ref=ysndr";
+  inputs.capacitor.url = "github:flox/capacitor";
   inputs.flake-utils.url = "github:numtide/flake-utils";
 
   outputs = { self, nixpkgs, capacitor, flake-utils }:
