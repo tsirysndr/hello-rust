@@ -1,10 +1,10 @@
 {
   inputs.nixpkgs.url = "github:nixos/nixpkgs";
   inputs.capacitor.url = "github:flox/capacitor";
-  inputs.flake-utils.url = "github:numtide/flake-utils";
 
-  outputs = { self, nixpkgs, capacitor, flake-utils }:
+  outputs = { self, nixpkgs, capacitor }:
     let
+      flake-utils = capacitor.inputs.nix-eval-jobs.inputs.flake-utils;
       flake = flake-utils.lib.eachDefaultSystem (system:
         let pkgs = nixpkgs.legacyPackages.${system};
         in
@@ -23,11 +23,6 @@
           defaultPackage = packages.hello;
         }
       );
-
-      capacitor-apps = capacitor.lib.makeApps combined nixpkgs;
-
-      combined = nixpkgs.lib.recursiveUpdate flake capacitor-apps;
     in
-      combined;
-
+      nixpkgs.lib.recursiveUpdate flake capacitor.lib.makeApps;
 }
