@@ -1,6 +1,6 @@
 {
   inputs.nixpkgs.url = "github:nixos/nixpkgs";
-  inputs.capacitor.url = "github:flox/capacitor";
+  inputs.capacitor.url = "github:flox/capacitor/ysndr";
 
   outputs = { self, nixpkgs, capacitor }:
     let
@@ -23,6 +23,5 @@
           defaultPackage = packages.hello;
         }
       );
-    in
-      nixpkgs.lib.recursiveUpdate flake capacitor.lib.makeApps;
+  in capacitor.lib.capacitate flake;
 }

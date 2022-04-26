@@ -6,15 +6,16 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1650326648,
-        "narHash": "sha256-098egRQLk9irfRHsevoOAFBXID9G0e6dnSEJ8h2vVag=",
+        "lastModified": 1650995438,
+        "narHash": "sha256-vEYzgpAyu/PiKFPI3FWcAV9VGBQm/IdFhtWhpgk+5lA=",
         "owner": "flox",
         "repo": "capacitor",
-        "rev": "7374c9ad701c90bd9a89072c47ae2f9554211d67",
+        "rev": "ac36f093449786c71f78e7b13da58b0f27660576",
         "type": "github"
       },
       "original": {
         "owner": "flox",
+        "ref": "ysndr",
         "repo": "capacitor",
         "type": "github"
       }
@@ -43,11 +44,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1649645040,
-        "narHash": "sha256-wfdvRP2r91dXjfdbak/30Tv3gZftHlwIyAcUTQIoP9Y=",
+        "lastModified": 1650329966,
+        "narHash": "sha256-kSr0AcRKp3cE5+QGVK258qd2zZtR7Ty8ysNX9EHFgA0=",
         "owner": "tomberek",
         "repo": "nix-eval-jobs",
-        "rev": "a56cd00e43a277116b1e46cf636858cac37c0216",
+        "rev": "adcde0193f1c4b58406d52222d265613b8b16432",
         "type": "github"
       },
       "original": {
@@ -74,11 +75,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1650326657,
-        "narHash": "sha256-YHQ/zz1QCMls33Cmxfn1jo/NO/Q+ON8aZPO2vIbmj7s=",
+        "lastModified": 1650878143,
+        "narHash": "sha256-2jY3TLNMEBBdv2ndNQuvdRwtP3T4kodujm7Qout53qM=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "9d51e29b6f37037e4712e1b59018336340502465",
+        "rev": "e76c8952c938d4b49e70e5e24f6d7568749c7b5d",
         "type": "github"
       },
       "original": {
