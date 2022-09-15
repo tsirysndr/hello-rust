@@ -1,27 +1,42 @@
 {
-  inputs.nixpkgs.url = "github:nixos/nixpkgs";
-  inputs.capacitor.url = "github:flox/capacitor/ysndr";
+  description = "Hello in Rust";
 
-  outputs = { self, nixpkgs, capacitor }:
-    let
-      flake-utils = capacitor.inputs.nix-eval-jobs.inputs.flake-utils;
-      flake = flake-utils.lib.eachDefaultSystem (system:
-        let pkgs = nixpkgs.legacyPackages.${system};
-        in
-        with pkgs;
-        rec {
-          packages = flake-utils.lib.flattenTree {
-            hello = rustPlatform.buildRustPackage rec {
-              name = "flake-info";
-              src = ./.;
-              cargoLock.lockFile = ./Cargo.lock;
-              nativeBuildInputs = [ pkg-config ];
-              buildInputs = [ openssl openssl.dev ]
-                ++ lib.optional pkgs.stdenv.isDarwin [ libiconv darwin.apple_sdk.frameworks.Security ];
-            };
+  inputs.capacitor.url = "git+ssh://git@github.com/flox/capacitor?ref=v0";
+  inputs.capacitor.inputs.root.follows = "/";
+  inputs.capacitor.inputs.nixpkgs.follows = "nixpkgs/nixpkgs-stable";
+
+  inputs.nixpkgs.url = "git+ssh://git@github.com/flox/nixpkgs-flox";
+  inputs.nixpkgs.inputs.capacitor.follows = "capacitor";
+
+  inputs.floxpkgs.url = "git+ssh://git@github.com/flox/floxpkgs";
+  inputs.floxpkgs.inputs.capacitor.follows = "capacitor";
+  inputs.floxpkgs.inputs.nixpkgs.follows = "nixpkgs";
+
+  nixConfig.bash-prompt = "[flox] \\[\\033[38;5;172m\\]λ \\[\\033[0m\\]";
+
+  outputs = args @ {capacitor, ...}:
+    capacitor args (
+      {
+        inputs,
+        lib,
+        ...
+      }: {
+        devShells.default =
+          lib.optionalAttrs
+          (builtins.pathExists ./flox.toml)
+          (inputs.floxpkgs.lib.mkFloxShell ./flox.toml {});
+
+        config = {
+          stabilities = {
+            stable = inputs.nixpkgs.stable;
+            staging = inputs.nixpkgs.staging;
+            unstable = inputs.nixpkgs.unstable;
+            default = inputs.nixpkgs.stable;
           };
-          defaultPackage = packages.hello;
-        }
-      );
-  in capacitor.lib.capacitate flake;
+          extraPlugins = [
+            (inputs.capacitor.plugins.allLocalResources {})
+          ];
+        };
+      }
+    );
 }
