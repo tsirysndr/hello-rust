@@ -8,6 +8,7 @@
   pkg-config,
   libiconv,
   darwin,
+  zstd,
 }:
 rustPlatform.buildRustPackage rec {
   pname = "hello-rust";
@@ -26,14 +27,13 @@ rustPlatform.buildRustPackage rec {
     };
   };
 
-
-
-  # Non-Rust runtime dependencies (most likely libraries) of your project can 
+  # Non-Rust runtime dependencies (most likely libraries) of your project can
   # be added in buildInputs.
   # Make sure to import any additional dependencies above
   buildInputs =
     [
       openssl.dev
+      zstd
     ]
     # Platform specific dependencies can be added as well
     # For MacOS
